@@ -2,6 +2,9 @@ environments:
   default:
     values:
     - jx-values.yaml
+repositories:
+- name: bitnami
+  url: https://charts.bitnami.com/bitnami
 releases:
 - chart: '../charts/{{ requiredEnv "APP_NAME" }}'
   name: preview
@@ -24,3 +27,10 @@ releases:
     - "secret.jenkins-x.io/replica-source=true"
     - --to
     - '{{ requiredEnv "PREVIEW_NAMESPACE" }}'
+- chart: bitnami/postgresql
+  name: postgresql
+  namespace: '{{ requiredEnv "PREVIEW_NAMESPACE" }}'
+  values:
+  - postgresqlUsername: postgres
+    postgresqlPostgresPassword: test
+    postgresqlPassword: test 

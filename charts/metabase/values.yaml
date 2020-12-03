@@ -11,9 +11,6 @@ image:
 jx:
   imagePullSecrets: []
 
-# define environment variables here as a map of key: value
-env:
-
 # enable this flag to use knative serve to deploy the app
 knativeDeploy: false
 
@@ -109,3 +106,19 @@ jxRequirements:
     # shared ingress annotations on all services
     annotations:
     #  kubernetes.io/ingress.class: nginx
+
+database:
+  password: test
+  username: postgres
+  database: postgres
+  hostname: postgresql
+
+tolerations: []
+
+affinity: {}
+
+nameOverride: shield
+
+env:
+  NODE_ENV: production
+  TZ: Asia/Kolkata
